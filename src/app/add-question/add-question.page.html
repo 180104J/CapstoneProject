@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add a Question</ion-title>
+    <ion-back-button slot="start"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="addQuestionForm">
+
+    <!-- <ion-item>
+      <ion-label>Question ID</ion-label>
+      <ion-input formControlName="questionID" disabled="true"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Creation Date</ion-label>
+      <ion-input formControlName="creationDate" disabled="true" ></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Modified Date</ion-label>
+      <ion-input formControlName="modifiedDate" disabled="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>User ID</ion-label>
+      <ion-input formControlName="userID" disabled="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>User Name</ion-label>
+      <ion-input formControlName="userName" disabled="true"></ion-input>
+    </ion-item> -->
+
+    <ion-item>
+      <ion-label>Details</ion-label>
+      <ion-input formControlName="questionDetails"></ion-input>
+      <ion-label
+        *ngIf="addQuestionForm.controls.questionDetails.errors && submitted" color="danger">
+        Please enter your question
+      </ion-label>
+    </ion-item>
+  </form>
+
+  <!-- <ion-label color="medium">
+    {{addQuestionForm.value.questionID}}
+    {{addQuestionForm.value.creationDate}}
+    {{addQuestionForm.value.modifiedDate}}
+    {{addQuestionForm.value.userID}}
+    {{addQuestionForm.value.userName}}
+    {{addQuestionForm.value.questionDetails}}
+    </ion-label> -->
+
+  <ion-button expand="block" color="secondary" type="submit" (click)=add()>
+    Post
+  </ion-button>
+</ion-content>

@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Welcome John (Senior)!</ion-title>
+    <ion-back-button slot="start"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <ion-searchbar #searchBar (ionChange)=search($event)></ion-searchbar> -->
+
+  <br>
+
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+  <ion-grid>
+    <ion-list id="tablestyle">
+      <ion-button color="primary" [routerLink]="['/add-comment']" id="addbutton">
+        Add a comment
+      <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+      <br>
+      <ion-item id="eachquestion"*ngFor="let item of question">
+      <ion-label>
+      <h2 id="h2">#{{item.questionID}}</h2>
+      <br>
+      <h2 id="h3">Reference #: {{item.referenceID}}</h2>
+      <br>
+      <h1 id="h1">{{item.questionDetails}}</h1>
+      <br>
+      <h3 id="h3">By: (#{{item.userID}}) {{item.userName}} </h3>
+      <h3 id="h3">Created: {{item.creationDate}} | Modified: {{item.modifiedDate}}</h3>
+      </ion-label>
+        <ion-icon *ngIf="(item.referenceID != 'NIL')" slot="end" name="trash-bin" (click)="delete(item)"></ion-icon> 
+      
+      <!-- <ion-list>
+        <ion-item *ngFor="let item of question">
+        <ion-label *ngIf="(item.questionID == 220717020506)">
+          <h2 id="h2">Question #{{item.questionID}}</h2>
+        </ion-label>
+      </ion-item>
+    </ion-list> -->
+      <br>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+  
+  <!-- <div id="container" *ngIf="questionlength===0">
+    <strong>There are no questions.</strong>
+  </div> -->
+</ion-content>

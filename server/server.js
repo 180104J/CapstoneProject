@@ -68,8 +68,8 @@ db.getConnection((err1) => {
     }
 
     console.log('Mysql connected....')
-    console.log('select * from UserAccountBabyG....')
-    db.query('select * from UserAccountBabyG;', function (err2, result, field) {
+console.log('select * from Questions....')
+    db.query('select * from Questions;', function (err2, result, field) {
         if (!err2) {
             console.log(result);
         }
@@ -118,165 +118,165 @@ app.listen(app.get('port'), function () {
 //         });
 // });
 
-//Signup Logic - Without hashing
-app.route('/signupNoHash', cors(corsOptions)).post(function (request, response) {
-    var email = request.body.Email; //this is from signup.page.ts
-    var password = request.body.Password;
-    db.query('SELECT * FROM UserAccountBabyG WHERE email = ?;', [email], function (error, result, fields) 
-    {
-        if (!error) {
-            if (result.length > 0) {
-                response.send(false)
-            } else {
-                // Hashing and salting password
-                // bcrypt.hash(password, saltRounds, function (err, hash) {
-                //  db.query("INSERT INTO UserAccountBabyG (email,password) VALUES(?,?);", [email, hash], function (error, result, fields) {
-                //             if (!error) {
-                //                 console.log('Row inserted:', result);
-                //             } else {
-                //                 console.log(error);
-                //             }
-                //             response.send(true);
-                //         })
-                // });
-                db.query("INSERT INTO UserAccountBabyG (email,password) VALUES(?,?);", [email, password], function (error, result, fields) {
-                    if (!error) 
-                    {
-                        console.log('Row inserted:', result);
-                    } else 
-                    {
-                        console.log(error);
-                    }
-                    response.send(true);
-                })
+// //Signup Logic - Without hashing
+// app.route('/signupNoHash', cors(corsOptions)).post(function (request, response) {
+//     var email = request.body.Email; //this is from signup.page.ts
+//     var password = request.body.Password;
+//     db.query('SELECT * FROM UserAccountBabyG WHERE email = ?;', [email], function (error, result, fields) 
+//     {
+//         if (!error) {
+//             if (result.length > 0) {
+//                 response.send(false)
+//             } else {
+//                 // Hashing and salting password
+//                 // bcrypt.hash(password, saltRounds, function (err, hash) {
+//                 //  db.query("INSERT INTO UserAccountBabyG (email,password) VALUES(?,?);", [email, hash], function (error, result, fields) {
+//                 //             if (!error) {
+//                 //                 console.log('Row inserted:', result);
+//                 //             } else {
+//                 //                 console.log(error);
+//                 //             }
+//                 //             response.send(true);
+//                 //         })
+//                 // });
+//                 db.query("INSERT INTO UserAccountBabyG (email,password) VALUES(?,?);", [email, password], function (error, result, fields) {
+//                     if (!error) 
+//                     {
+//                         console.log('Row inserted:', result);
+//                     } else 
+//                     {
+//                         console.log(error);
+//                     }
+//                     response.send(true);
+//                 })
 
-            }
-        } else {
-            console.log(error);
-        }
-    });
-});
+//             }
+//         } else {
+//             console.log(error);
+//         }
+//     });
+// });
 
-//Signup Logic
-app.route('/signup', cors(corsOptions)).post(function (request, response) {
-    var email = request.body.Email; //this is from signup.page.ts
-    var password = request.body.Password;
-    db.query('SELECT * FROM UserAccountBabyG WHERE email = ?;', [email], function (error, result, fields) 
-    {
-        if (!error) {
-            if (result.length > 0) {
-                response.send(false)
-            } else {
-                // Hashing and salting password
-                bcrypt.hash(password, saltRounds, function (err, hash) {
-                 db.query("INSERT INTO UserAccountBabyG (email,password) VALUES(?,?);", [email, hash], function (error, result, fields) {
-                            if (!error) {
-                                console.log('Row inserted:', result);
-                            } else {
-                                console.log(error);
-                            }
-                            response.send(true);
-                        })
-                });
+// //Signup Logic
+// app.route('/signup', cors(corsOptions)).post(function (request, response) {
+//     var email = request.body.Email; //this is from signup.page.ts
+//     var password = request.body.Password;
+//     db.query('SELECT * FROM UserAccountBabyG WHERE email = ?;', [email], function (error, result, fields) 
+//     {
+//         if (!error) {
+//             if (result.length > 0) {
+//                 response.send(false)
+//             } else {
+//                 // Hashing and salting password
+//                 bcrypt.hash(password, saltRounds, function (err, hash) {
+//                  db.query("INSERT INTO UserAccountBabyG (email,password) VALUES(?,?);", [email, hash], function (error, result, fields) {
+//                             if (!error) {
+//                                 console.log('Row inserted:', result);
+//                             } else {
+//                                 console.log(error);
+//                             }
+//                             response.send(true);
+//                         })
+//                 });
 
                
-            }
-        } else {
-            console.log(error);
-        }
-    });
-});
+//             }
+//         } else {
+//             console.log(error);
+//         }
+//     });
+// });
 
 
-//Login Logic (No Hash)
-app.route('/loginNoHash',cors(corsOptions))
-    .post(function(request, response) {
-        var Email = request.body.Email;
-        var Password = request.body.Password;
-        // Check account details
-        db.query('SELECT * FROM UserAccountBabyG WHERE email = ?;', [Email], function(error, result, fields){
-            if (!error) {
-                console.log(result);
-            } else {
-                console.log(error);
-            }
+// //Login Logic (No Hash)
+// app.route('/loginNoHash',cors(corsOptions))
+//     .post(function(request, response) {
+//         var Email = request.body.Email;
+//         var Password = request.body.Password;
+//         // Check account details
+//         db.query('SELECT * FROM UserAccountBabyG WHERE email = ?;', [Email], function(error, result, fields){
+//             if (!error) {
+//                 console.log(result);
+//             } else {
+//                 console.log(error);
+//             }
 
 
-            if (result.length > 0) {
-                if (Password == result[0].password)
-                {
-                    console.log(result);
-                    response.send(result); 
+//             if (result.length > 0) {
+//                 if (Password == result[0].password)
+//                 {
+//                     console.log(result);
+//                     response.send(result); 
                     
-                } else 
-                {
-                    response.send(null);
+//                 } else 
+//                 {
+//                     response.send(null);
                                          
-                }
+//                 }
 
-                // Compare the password with hashing and salting
-//                 bcrypt.compare(Password, result[0].password,
-//  function(err, res) {
-//                     if (res == true) {
-//                         response.send(result); 
+//                 // Compare the password with hashing and salting
+// //                 bcrypt.compare(Password, result[0].password,
+// //  function(err, res) {
+// //                     if (res == true) {
+// //                         response.send(result); 
         
+// //                     } else {
+// //                         response.send(null);
+// //                     }
+
+
+                
+//                 Password.localeCompare(result[0].password,
+//                         function(err, res) {
+//                             if (res == true) {
+//                                 response.send(result); 
+                
+//                             } else {
+//                                 response.send(null);
+//                             }
+
+//                         });  
 //                     } else {
 //                         response.send(null);
 //                     }
+//         } )
+//     })
 
-
-                
-                Password.localeCompare(result[0].password,
-                        function(err, res) {
-                            if (res == true) {
-                                response.send(result); 
-                
-                            } else {
-                                response.send(null);
-                            }
-
-                        });  
-                    } else {
-                        response.send(null);
-                    }
-        } )
-    })
-
-//Login Logic
-app.route('/login',cors(corsOptions))
-    .post(function(request, response) {
-        var Email = request.body.Email;
-        var Password = request.body.Password;
-        // Check account details
-        db.query('SELECT * FROM UserAccountBabyG WHERE email = ?;', [Email], function(error, result, fields){
+// //Login Logic
+// app.route('/login',cors(corsOptions))
+//     .post(function(request, response) {
+//         var Email = request.body.Email;
+//         var Password = request.body.Password;
+//         // Check account details
+//         db.query('SELECT * FROM UserAccountBabyG WHERE email = ?;', [Email], function(error, result, fields){
             
-            if (!error) 
-            {
-                console.log(result);
-            } else {
-                console.log(error);
-            }
+//             if (!error) 
+//             {
+//                 console.log(result);
+//             } else {
+//                 console.log(error);
+//             }
 
 
-            if (result.length > 0) {
+//             if (result.length > 0) {
                
-                //Compare the password with hashing and salting
-                bcrypt.compare(Password, result[0].password,
-                    function(err, res) {
-                        if (res == true) {
-                            response.send(result); 
-                        } else {
-                            //response.send(null);
-                            var varTemp;
-                            varTemp = Password + " vs " + result[0].password;
-                            response.send(varTemp);
-                        }
-                    }
-                )
-            }
+//                 //Compare the password with hashing and salting
+//                 bcrypt.compare(Password, result[0].password,
+//                     function(err, res) {
+//                         if (res == true) {
+//                             response.send(result); 
+//                         } else {
+//                             //response.send(null);
+//                             var varTemp;
+//                             varTemp = Password + " vs " + result[0].password;
+//                             response.send(varTemp);
+//                         }
+//                     }
+//                 )
+//             }
 
-        } )
-    })
+//         } )
+//     })
 // app.route('/login', cors(corsOptions))
 //     .post(function (request, response) {
 //         var email = request.body.Email;
@@ -363,16 +363,18 @@ app.route('/login',cors(corsOptions))
 //             });
 //     });
 
-app.route('/addItem', cors(corsOptions))
+app.route('/add-question', cors(corsOptions))
     .post(function (request, response) {
-        var ProdName = request.body.ProdName;
-        var ProdPrice = request.body.ProdPrice;
-        var ProdImage = request.body.ProdImage;
-        var ProdCategory = request.body.ProdCategory;
-        var ProdVeg = request.body.ProdVeg;
+        var questionID = request.body.questionID;
+        var creationDate = request.body.creationDate;
+        var modifiedDate = request.body.modifiedDate;
+        var userID = request.body.userID;
+        var userName = request.body.userName;
+        var questionDetails = request.body.questionDetails;
+        var referenceID = request.body.referenceID;
         // Insert Item
-        db.query('INSERT Into products (prodName,prodPrice,prodImage,prodCategory, prodVegetarian) values(?,?,?,?,?); ',
-            [ProdName, ProdPrice, ProdImage, ProdCategory, ProdVeg], function
+        db.query('INSERT Into Questions (questionID, creationDate, modifiedDate, userID, userName, questionDetails, referenceID) values(?,?,?,?,?,?,?); ',
+            [questionID, creationDate, modifiedDate, userID, userName, questionDetails, referenceID], function
             (error, result, fields) {
             if (!error) {
                 console.log(result);
@@ -384,9 +386,9 @@ app.route('/addItem', cors(corsOptions))
         });
     });
 
-app.route('/getListItem', cors(corsOptions))
+app.route('/getQuestion', cors(corsOptions))
     .get(function (request, response) {
-        db.query('SELECT * FROM products ;',
+        db.query('SELECT * FROM Questions ;',
             function (error, result, fields) {
                 if (error) {
                     console.log('Error message: ', error);
@@ -398,36 +400,59 @@ app.route('/getListItem', cors(corsOptions))
             });
     });
 
-app.route('/getItem', cors(corsOptions))
-    .post(function (request, response) {
-        var ProdId = request.body.ProdId
-        // get Item
-        db.query('SELECT * FROM products WHERE prodId = ? ;', [ProdId],
-            function (error, result, fields) {
-                if (!error) {
-                    if (result.length > 0) {
-                        response.send(result);
-                    } else {
-                        response.send(false);
-                    }
-                } else {
-                    console.log(error);
-                    throw error
-                }
-            })
-    });
+// app.route('/getItem', cors(corsOptions))
+//     .post(function (request, response) {
+//         var ProdId = request.body.ProdId
+//         // get Item
+//         db.query('SELECT * FROM products WHERE prodId = ? ;', [ProdId],
+//             function (error, result, fields) {
+//                 if (!error) {
+//                     if (result.length > 0) {
+//                         response.send(result);
+//                     } else {
+//                         response.send(false);
+//                     }
+//                 } else {
+//                     console.log(error);
+//                     throw error
+//                 }
+//             })
+//     });
 
-app.route('/editItem', cors(corsOptions))
+// app.route('/editItem', cors(corsOptions))
+//     .post(function (request, response) {
+//         var ProdId = request.body.ProdId;
+//         var ProdName = request.body.ProdName;
+//         var ProdPrice = request.body.ProdPrice;
+//         var ProdImage = request.body.ProdImage;
+//         var ProdCategory = request.body.ProdCategory;
+//         var ProdVeg = request.body.ProdVeg;
+//         // edit Item
+//         db.query('UPDATE products set prodname=?, prodprice=?,prodimage=?,prodcategory =?, prodvegetarian =? where prodId =? ; ',
+//             [ProdName, ProdPrice, ProdImage, ProdCategory, ProdVeg, ProdId],
+//             function (error, result, fields) {
+//                 if (!error) {
+//                     console.log(result);
+//                     response.send(true)
+//                 } else {
+//                     console.log(error);
+//                     response.send(false)
+//                 }
+//             })
+//     });
+
+app.route('/editQuestions', cors(corsOptions))
     .post(function (request, response) {
-        var ProdId = request.body.ProdId;
-        var ProdName = request.body.ProdName;
-        var ProdPrice = request.body.ProdPrice;
-        var ProdImage = request.body.ProdImage;
-        var ProdCategory = request.body.ProdCategory;
-        var ProdVeg = request.body.ProdVeg;
+        var questionID = request.body.questionID;
+        var creationDate = request.body.creationDate;
+        var modifiedDate = request.body.modifiedDate;
+        var userID = request.body.userID;
+        var userName = request.body.userName;
+        var questionDetails = request.body.questionDetails;
+        var referenceID = request.body.referenceID;
         // edit Item
-        db.query('UPDATE products set prodname=?, prodprice=?,prodimage=?,prodcategory =?, prodvegetarian =? where prodId =? ; ',
-            [ProdName, ProdPrice, ProdImage, ProdCategory, ProdVeg, ProdId],
+        db.query('UPDATE Questions set questionDetails=? where questionID =? ; ',
+            [questionID, creationDate, modifiedDate, userID, userName, questionDetails, referenceID],
             function (error, result, fields) {
                 if (!error) {
                     console.log(result);
@@ -439,11 +464,11 @@ app.route('/editItem', cors(corsOptions))
             })
     });
 
-app.route('/deleteItem', cors(corsOptions))
+app.route('/deleteQuestions', cors(corsOptions))
     .post(function (request, response) {
-        var ProdId = request.body.ProdId;
-        db.query('DELETE FROM products where prodid = ? ;',
-            [ProdId],
+        var questionID = request.body.questionID;
+        db.query('DELETE FROM Questions where questionID = ? ;',
+            [questionID],
             function (error, result, field) {
                 if (!error) {
                     console.log(result);

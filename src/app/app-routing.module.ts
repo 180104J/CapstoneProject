@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'edit-question/:questionID',
     loadChildren: () => import('./edit-question/edit-question.module').then( m => m.EditQuestionPageModule)
   },
+  {
+    path: 'add-comment',
+    loadChildren: () => import('./add-comment/add-comment.module').then( m => m.AddCommentPageModule)
+  },
 ];
 @NgModule({
   imports: [
