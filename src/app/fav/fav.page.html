@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Bookmarked Courses</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar (ionChange)=search($event)></ion-searchbar>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container" *ngIf ="favList.length==0">
+    <strong>No bookmarked courses</strong>
+  </div>
+  <ion-list>
+    <ion-item *ngFor="let item of favList">
+      <ion-thumbnail slot="start">
+        <img [src]=item.image>
+        </ion-thumbnail>
+      <ion-label [routerLink]="['/fav', item.id]">
+        <h2>{{item.name}}</h2>
+        <p>{{item.description}}</p>
+      </ion-label>
+      <ion-icon slot="end" name="trash-bin" (click) ="delete(item)"></ion-icon> 
+   </ion-item>
+  </ion-list>

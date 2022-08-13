@@ -33,10 +33,10 @@ app.get('/', cors(corsOptions), (req, res, next) => {
 
 const db = mysql.createPool({
     connectionLimit: 100,
-    host: '127.0.0.1',
-    user: 'root',
-    password: 'pass1234',
-    database: 'Localhost MySQL80'
+    host: 'a2nlmysql19plsk.secureserver.net',
+    user: 'Eximius',
+    password: 'ms@ITJ153',
+    database: 'Eximius'
 });
 db.getConnection((err1) => {
     console.log('Connecting mySQL....')
@@ -58,3 +58,18 @@ app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), function () {
     console.log("listening to Port", app.get("port"));
 });
+
+/*//Get tab2
+app.route('/getCourses', cors(corsOptions))
+.get(function (request, response) {
+db.query('SELECT * FROM course ;',
+function (error, result, fields) {
+if (error) {
+console.log('Error message: ', error);
+throw error;
+};
+console.log(result)
+response.send(result);
+//sent all item details
+})
+})*/

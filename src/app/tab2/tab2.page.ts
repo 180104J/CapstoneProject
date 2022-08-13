@@ -17,9 +17,7 @@ export class Tab2Page {
     this.courses = this.courseService.getCourses();
   }
 
-  /*addToFav(item: Course) {
-    this.courseService.addToFav(item);
-  }*/
+
   async iconChange(item: Course){
     if (item.icon == 'bookmark-outline'){
       item.icon = 'bookmark';
@@ -42,8 +40,19 @@ export class Tab2Page {
         });
         toast.present();
       
-    }
+    } 
   }
+
+    /*ngOnInit() {
+    this.getCourses()
+  }
+
+  async getCourses(){
+    var url = 'https://eximiuscapstoneproject2022.herokuapp.com/getCourses';
+    this.http.get(url).subscribe(data => {
+    this.courses=data
+    })
+  }*/
 
 
 }
