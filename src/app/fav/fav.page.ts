@@ -51,9 +51,9 @@ export class FavPage implements OnInit {
   }
 
   /*delete (item){
-    var url = 'https://acework.herokuapp.com/deleteItem';
+    var url = 'https://eximiuscapstoneproject2022.herokuapp.com/deleteItem';
     var postData = JSON.stringify({
-    ProdID : item.prodId
+    CourseID : item.prodId
     });
     console.log("test2")
     const httpOptions = {
@@ -75,7 +75,7 @@ export class FavPage implements OnInit {
     }, error => {
     console.log(error);
     });
-    }*/
+  }*/
     
 
 }

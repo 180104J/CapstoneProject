@@ -63,6 +63,78 @@ export class EditProfilePage implements OnInit {
       this.router.navigate(['tabs/tab3'])
   }
 
+
+  /* Add getData() method
+  ngOnInit() {
+    this.getData()
+  }
+  result: any = [];
+  getData() {
+    var url = 'https://eximiuscapstoneproject2022.herokuapp.com/getUser';
+    var postData = JSON.stringify({
+      UserID: this.userId
+    });
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE'
+      })
+    };
+    this.http.post(url, postData, httpOptions).subscribe((data) => {
+      console.log('postData:', postData)
+      console.log(data);
+      if (data != null) {
+        this.result = data;
+      } else {
+        // this.failed()
+      }
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  update() {
+    this.submitted = true;
+    if (this.editUserForm.valid) {
+      //*var veg="false"
+      //if(this.editUserForm.value['vegetarian']){
+        //veg="true"
+      //}
+      var url = 'https://eximiuscapstoneproject2022.herokuapp.com/editItem';
+      var postData = JSON.stringify({
+        userId: this.userId,
+        name: this.editUserForm.value['name'],
+        mobile:this.editUserForm.value['mobile'],
+        email:this.editUserForm.value['email'],
+        education:this.editUserForm.value['education'],
+        userImage:"",
+      });
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE'
+        })
+      };
+      this.http.post(url, postData, httpOptions).subscribe((data) => {
+        console.log(postData)
+        console.log(data);
+        if (data ==true) {
+          this.result = data;
+          window.location.reload();
+        } else {
+          // this.failed()
+        }
+      }, error => {
+        console.log(error);
+      });
+      this.router.navigate(['tabs/tab2']);
+    }//if valid
+  }
+
+  */
+
   
 
   
