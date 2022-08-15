@@ -10,11 +10,11 @@ export class UserService {
   constructor() {
     this.users = [
       new User('Mary', 81234567, 'mary123@yahoo.com.sg','University Year 2','assets/profile1.png', '1'),
-      new User('John', 81234567, 'mary123@yahoo.com.sg','University Year 2','assets/profile1.png', '2'),
+      new User('John', 81234567, 'mary123@yahoo.com.sg','University Year 2','assets/profile2.png', '2'),
     ];
   }
   // retreive user
-  getUsers(): User[] {
+  getUser(): User[] {
     return this.users;
   }
 

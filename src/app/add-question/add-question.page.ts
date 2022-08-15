@@ -48,7 +48,7 @@ export class AddQuestionPage implements OnInit {
       this.addQuestionForm.value.referenceID);
       this.questionService.add(ques);
 
-       var url = 'https://eximiuscapstoneproject2022.herokuapp.com/add-question';
+       var url = 'https://itj153-eximius.herokuapp.com/add-question';
        var postData = JSON.stringify({
         questionID: this.addQuestionForm.value['questionID'],
         creationDate: this.addQuestionForm.value['creationDate'],

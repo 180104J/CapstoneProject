@@ -12,7 +12,7 @@ export class FavService {
   private isAdded(course: Course) {
     let found = undefined;
     for (let index in this.items) {
-      if (this.items[index].name === course.name) {
+      if (this.items[index].courseTitle === course.courseTitle) {
         found = index;
         break;
       }
@@ -42,7 +42,7 @@ export class FavService {
   }
 
   delete(item: Course){
-    const index = this.items.findIndex(item => item.id == item.id);
+    const index = this.items.findIndex(item => item.courseId == item.courseId);
      if (index >= 0) {
      this.items.splice(index, 1);
      }

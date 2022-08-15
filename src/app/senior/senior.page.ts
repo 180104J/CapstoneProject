@@ -23,14 +23,14 @@ export class SeniorPage implements OnInit {
   }
   
   async getQuestion(){
-    var url = 'https://eximiuscapstoneproject2022.herokuapp.com/getQuestion';
+    var url = 'https://itj153-eximius.herokuapp.com/getQuestion';
     this.http.get(url).subscribe(data => {
     this.question=data
     })
     }
 
     delete (item){
-      var url = 'https://eximiuscapstoneproject2022.herokuapp.com/deleteQuestions';
+      var url = 'https://itj153-eximius.herokuapp.com/deleteQuestions';
       
             var postData = JSON.stringify({
   

@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 import { IonicModule } from '@ionic/angular';
 
-import { SeniorPageRoutingModule } from './senior-routing.module';
+import { AddCoursePageRoutingModule } from './add-course-routing.module';
 
-import { SeniorPage } from './senior.page';
+import { AddCoursePage } from './add-course.page';
 
 @NgModule({
   imports: [
@@ -15,8 +14,8 @@ import { SeniorPage } from './senior.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    SeniorPageRoutingModule
+    AddCoursePageRoutingModule
   ],
-  declarations: [SeniorPage]
+  declarations: [AddCoursePage]
 })
-export class SeniorPageModule {}
+export class AddCoursePageModule {}

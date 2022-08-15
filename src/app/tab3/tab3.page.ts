@@ -11,14 +11,11 @@ import { UserService } from '../shared/services/user.service';
 })
 export class Tab3Page {
   users: User[] = [];
-  user: any = [];
+  user: any = []; 
 
   constructor(private userService: UserService, private http: HttpClient) {
-    /*this.users = [
-      new User('Mary', 81234567, 'mary123@yahoo.com.sg','University Year 2','assets/profile1.png', 'mary'),
-    ]; */
 
-    this.users = this.userService.getUsers();
+    this.users = this.userService.getUser();
   }
 
   ngOnInit() {
@@ -26,10 +23,9 @@ export class Tab3Page {
   }
 
   async getUser(){
-    var url = 'https://eximiuscapstoneproject2022.herokuapp.com/getUser';
+    var url = 'https://itj153-eximius.herokuapp.com/getUser';
     this.http.get(url).subscribe(data => {
-
-    this.user=data
+      this.user=data
     })
   }
 

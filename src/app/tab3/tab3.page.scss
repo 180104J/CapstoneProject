@@ -1,8 +1,10 @@
 #profile {
+  padding-top: 20px;
+  padding-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
     max-width: 150px;
-    max-height: 150px;
+    max-height: 200px;
     
   }
 #container {
@@ -10,6 +12,10 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 40%;
+    top: 45%;
     transform: translateY(-50%);
+    padding-top: 20px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 30px;
 }

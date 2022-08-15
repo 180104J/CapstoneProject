@@ -23,10 +23,10 @@ export class FavPage implements OnInit {
 
   async delete(item) {
     const toast = await this.toastController.create({
-      message: item.name + ' course deleted from bookmark list',
+      message: item.courseTitle + ' course deleted from bookmark list',
       duration: 1000,
       position: 'top',
-      color: 'success'
+      color: 'danger'
       });
       toast.present();
       this.favService.delete(item);
@@ -40,7 +40,7 @@ export class FavPage implements OnInit {
     
     if (text && text.trim() !== '') {
     this.favList = allItems.filter(
-      item => item.name.toLowerCase().includes(text.toLowerCase()));
+      item => item.courseTitle.toLowerCase().includes(text.toLowerCase()));
     } 
     else {
     // Blank text, clear the search, show all products
@@ -51,7 +51,7 @@ export class FavPage implements OnInit {
   }
 
   /*delete (item){
-    var url = 'https://eximiuscapstoneproject2022.herokuapp.com/deleteItem';
+    var url = 'https://itj153-eximius.herokuapp.com/deleteItem';
     var postData = JSON.stringify({
     CourseID : item.prodId
     });

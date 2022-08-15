@@ -82,7 +82,7 @@ export class GraduatePage implements OnInit {
   }
 
   async getQuestion(){
-    var url = 'https://eximiuscapstoneproject2022.herokuapp.com/getQuestion';
+    var url = 'https://itj153-eximius.herokuapp.com/getQuestion';
     this.http.get(url).subscribe(data => {
     this.question=data
     })

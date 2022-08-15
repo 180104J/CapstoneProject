@@ -1,0 +1,141 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add New Work-Study Programme Course</ion-title>
+
+    <!-- P_PageNavigation -->
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="addCourseForm"> 
+
+    <ion-item>
+      <ion-label>Course Title</ion-label>
+      <ion-input formControlName="courseTitle"></ion-input>
+      <ion-label   
+      *ngIf="addCourseForm.controls.courseTitle.errors && submitted" 
+      color="danger">
+           Course Title is required
+          </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Institution</ion-label>
+      <ion-input formControlName="institution"></ion-input>
+      <ion-label   
+      *ngIf="addCourseForm.controls.institution.errors && submitted" 
+      color="danger">
+           Institution is required
+          </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Sector</ion-label>
+      <ion-input formControlName="sector"></ion-input>
+      <ion-label   
+      *ngIf="addCourseForm.controls.sector.errors && submitted" 
+      color="danger">
+           Sector is required
+          </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Job Role</ion-label>
+      <ion-input formControlName="jobRole"></ion-input>
+      <ion-label   
+      *ngIf="addCourseForm.controls.jobRole.errors && submitted" 
+      color="danger">
+           Job Role is required
+          </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Application Status</ion-label>
+      <ion-input formControlName="applicationStatus"></ion-input>
+      <ion-label   
+      *ngIf="addCourseForm.controls.applicationStatus.errors && submitted" 
+      color="danger">
+           Application Status is required
+          </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Overview</ion-label>
+      <ion-input formControlName="overview"></ion-input>
+      <ion-label   
+      *ngIf="addCourseForm.controls.overview.errors && submitted" 
+      color="danger">
+           Overview is required
+          </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Entry Requirement</ion-label>
+      <ion-input formControlName="entryRequirement"></ion-input>
+      <ion-label   
+      *ngIf="addCourseForm.controls.entryRequirement.errors && submitted" 
+      color="danger">
+           Entry Requirement is required
+          </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Course Fee</ion-label>
+      <ion-input formControlName="courseFee"></ion-input>
+      <ion-label   
+      *ngIf="addCourseForm.controls.courseFee.errors && submitted" 
+      color="danger">
+           Course Fee is required
+          </ion-label>
+    </ion-item>
+    <ion-item 
+    *ngIf="addCourseForm.controls.courseFee.errors && submitted">
+     <ion-label color="danger">
+       Course Fee must be positive
+     </ion-label>
+   </ion-item>
+
+   
+   <ion-item>
+    <ion-label>Image URL</ion-label>
+    <ion-input formControlName="entryRequirement"></ion-input>
+  </ion-item>
+
+    
+
+    <!-- <ion-button expand="block" color="secondary" (click)=add()>Add</ion-button> -->
+
+    <ion-button expand="block" color="secondary" type="submit" (click)=addCourse()>
+      Add
+    </ion-button>
+    
+    
+
+  </form>
+
+
+  <ion-label color="medium">
+    {{addCourseForm.value.courseTitle}}
+    {{addCourseForm.value.sector}}
+    {{addCourseForm.value.institution}}
+    {{addCourseForm.value.jobRole}}
+    {{addCourseForm.value.applicationStatus}}
+    {{addCourseForm.value.overview}}
+    {{addCourseForm.value.entryRequirement}}
+    {{addCourseForm.value.courseFee}}
+    {{addCourseForm.value.imgUrl}}
+  </ion-label>
+
+
+
+  <!-- P_PageNavigation -->
+  <!-- <ion-button expand="block" color="secondary" (click)="add()">
+    Add
+  </ion-button> -->
+
+</ion-content>

@@ -13,17 +13,15 @@
     <ion-toolbar>
     </ion-toolbar>
   </ion-header>
-
+  <div id="container" >
 <form [formGroup]="editUserForm">
-  <ion-list>
-    <img [src]=userImage alt="" class="image-card">
+  <ion-list *ngFor="let param of users">
+    <img [src]=image alt="" class="image-card">
     <ion-item>
-      
-
     </ion-item>
     
     <ion-item>
-      <ion-label>Name: </ion-label>
+      <ion-label style="font-weight: 700;">Name: </ion-label>
       <ion-input formControlName="name" value={{name}}></ion-input>
       <ion-label *ngIf="editUserForm.controls.name.errors && submitted" color="danger">
         Name is required
@@ -31,26 +29,26 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>Mobile Number: </ion-label>
+      <ion-label style="font-weight: 700;">Mobile Number: </ion-label>
       <ion-input formControlName="mobile" value={{mobile}}></ion-input>
       <ion-label color="danger" *ngIf="editUserForm.controls.mobile.errors && submitted">
-        Mobile Number is 8 digits
+        Mobile Number is 8 digit
       </ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-label>Email Address: </ion-label>
+      <ion-label style="font-weight: 700;">Email Address: </ion-label>
       <ion-input formControlName="email" value={{email}}></ion-input>
       <ion-label *ngIf="editUserForm.controls.email.errors && submitted" color="danger">
-        Name is required
+        Please enter a email address
       </ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-label>Education Level: </ion-label>
+      <ion-label style="font-weight: 700;" >Education Level: </ion-label>
       <ion-input formControlName="education" value={{education}}></ion-input>
       <ion-label *ngIf="editUserForm.controls.education.errors && submitted" color="danger">
-        Name is required
+        Please enter your education level
       </ion-label>
     </ion-item>
 
@@ -60,6 +58,7 @@
     </ion-button>
   </ion-list>
 </form>
+</div>
 
 
 

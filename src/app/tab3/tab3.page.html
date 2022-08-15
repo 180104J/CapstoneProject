@@ -9,7 +9,7 @@
       </ion-button>
       </ion-buttons>
   </ion-toolbar>
-</ion-header>
+</ion-header> 
 
 <ion-content [fullscreen]="true">
   
@@ -19,7 +19,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container" *ngFor="let item of users">
+  <div id="container" *ngFor="let item of user">
 
     <ion-item id ="profile">
       <div class="profile">
@@ -28,22 +28,22 @@
     </ion-item>
       
     <ion-item>
-      <ion-label>Name:</ion-label>
+      <ion-label style="font-weight: 700;">Name:</ion-label>
       <ion-label>{{item.name}}</ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-label>Phone Number:</ion-label>
+      <ion-label style="font-weight: 700;">Phone Number:</ion-label>
       <ion-label>{{item.mobile}}</ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-label>Email Address:</ion-label>
+      <ion-label style="font-weight: 700;">Email Address:</ion-label>
       <ion-label>{{item.email}}</ion-label>
     </ion-item>
 
     <ion-item >
-      <ion-label>Education Level:</ion-label>
+      <ion-label style="font-weight: 700;">Education Level:</ion-label>
       <ion-label>{{item.education}}</ion-label>
     </ion-item>
 
