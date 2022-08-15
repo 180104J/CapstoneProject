@@ -24,7 +24,7 @@ export class FavPage implements OnInit {
   async delete(item) {
     const toast = await this.toastController.create({
       message: item.name + ' course deleted from bookmark list',
-      duration: 2000,
+      duration: 1000,
       position: 'top',
       color: 'success'
       });

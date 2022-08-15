@@ -65,7 +65,7 @@ app.listen(app.get('port'), function () {
     console.log("listening to Port", app.get("port"));
 });
 
-/*//Get tab2
+//Get tab2
 app.route('/getCourses', cors(corsOptions))
 .get(function (request, response) {
     db.query('SELECT * FROM course ;',
@@ -78,8 +78,23 @@ app.route('/getCourses', cors(corsOptions))
         response.send(result);
         //sent all item details
     })
-})*/
+})
 
+//SIN SIAN PART
+//Get tab2
+app.route('/getUser', cors(corsOptions))
+.get(function (request, response) {
+    db.query('SELECT * FROM user ;',
+    function (error, result, fields) {
+        if (error) {
+            console.log('Error message: ', error);
+            throw error;
+        };
+        console.log(result)
+        response.send(result);
+        //sent all item details
+    })
+})
 
 /* UPDATE USER DETAILS
 app.route('/getItem', cors(corsOptions)).post(function (request, response) {
@@ -122,3 +137,81 @@ app.route('/editUser', cors(corsOptions)).post(function (request, response) {
 })
 
 */
+
+
+//HUI FANG PART 
+app.route('/add-question', cors(corsOptions))
+    .post(function (request, response) {
+        var questionID = request.body.questionID;
+        var creationDate = request.body.creationDate;
+        var modifiedDate = request.body.modifiedDate;
+        var userID = request.body.userID;
+        var userName = request.body.userName;
+        var questionDetails = request.body.questionDetails;
+        var referenceID = request.body.referenceID;
+        // Insert Item
+        db.query('INSERT Into Questions (questionID, creationDate, modifiedDate, userID, userName, questionDetails, referenceID) values(?,?,?,?,?,?,?); ',
+            [questionID, creationDate, modifiedDate, userID, userName, questionDetails, referenceID], function
+            (error, result, fields) {
+            if (!error) {
+                console.log(result);
+                response.send(true)
+            } else {
+                console.log(error);
+                response.send(false)
+            }
+        });
+    });
+
+    app.route('/getQuestion', cors(corsOptions))
+    .get(function (request, response) {
+        db.query('SELECT * FROM Questions ;',
+            function (error, result, fields) {
+                if (error) {
+                    console.log('Error message: ', error);
+                    throw error;
+                };
+                console.log(result)
+                response.send(result);
+                //sent all item details
+            });
+    });
+
+    app.route('/editQuestions', cors(corsOptions))
+    .post(function (request, response) {
+        var questionID = request.body.questionID;
+        var creationDate = request.body.creationDate;
+        var modifiedDate = request.body.modifiedDate;
+        var userID = request.body.userID;
+        var userName = request.body.userName;
+        var questionDetails = request.body.questionDetails;
+        var referenceID = request.body.referenceID;
+        // edit Item
+        db.query('UPDATE Questions set questionDetails=? where questionID =? ; ',
+            [questionID, creationDate, modifiedDate, userID, userName, questionDetails, referenceID],
+            function (error, result, fields) {
+                if (!error) {
+                    console.log(result);
+                    response.send(true)
+                } else {
+                    console.log(error);
+                    response.send(false)
+                }
+            })
+    });
+
+app.route('/deleteQuestions', cors(corsOptions))
+    .post(function (request, response) {
+        var questionID = request.body.questionID;
+        db.query('DELETE FROM Questions where questionID = ? ;',
+            [questionID],
+            function (error, result, field) {
+                if (!error) {
+                    console.log(result);
+                    response.send(true)
+                } else {
+                    console.log(error);
+                    response.send(false)
+                }
+            });
+    });

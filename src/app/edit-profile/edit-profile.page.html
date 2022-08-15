@@ -18,7 +18,7 @@
   <ion-list>
     <img [src]=userImage alt="" class="image-card">
     <ion-item>
-      <ion-label color="medium">{{userId}}</ion-label>
+      
 
     </ion-item>
     
@@ -32,9 +32,9 @@
 
     <ion-item>
       <ion-label>Mobile Number: </ion-label>
-      <ion-input type="number" formControlName="mobile" value={{mobile}}></ion-input>
+      <ion-input formControlName="mobile" value={{mobile}}></ion-input>
       <ion-label color="danger" *ngIf="editUserForm.controls.mobile.errors && submitted">
-        Mobile Number is required
+        Mobile Number is 8 digits
       </ion-label>
     </ion-item>
 

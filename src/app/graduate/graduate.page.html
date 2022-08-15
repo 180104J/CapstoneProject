@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Welcome Mary (Graduate)!</ion-title>
+    <ion-back-button slot="start"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <ion-searchbar #searchBar (ionChange)=search($event)></ion-searchbar> -->
+
+  <br>
+
+  <ion-button color="primary" [routerLink]="['/add-question']" id="addbutton">
+    Add a question
+  <ion-icon slot="icon-only" name="add"></ion-icon>
+  </ion-button>
+
+  <br>
+
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+  <ion-grid>
+    <ion-list id="tablestyle">
+      <ion-item id="eachquestion"*ngFor="let item of question">
+      <ion-label>
+      <!-- <ion-label [routerLink]="['/edit-question', item.questionID]"> -->
+      <h2 id="h2">Question #{{item.questionID}}</h2>
+      <br>
+      <h1 id="h1">{{item.questionDetails}}</h1>
+      <br>
+      <h3 id="h3">Asked By: (#{{item.userID}}) {{item.userName}} </h3>
+      <h3 id="h3">Created: {{item.creationDate}} | Modified: {{item.modifiedDate}}</h3>
+      </ion-label>
+      <ion-icon *ngIf="(item.referenceID == 'NIL')" slot="end" name="trash-bin" (click)="delete(item)"></ion-icon> 
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+  
+  <!-- <div id="container" *ngIf="questionlength===0">
+    <strong>There are no questions.</strong>
+  </div> -->
+</ion-content>
+

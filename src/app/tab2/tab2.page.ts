@@ -3,6 +3,8 @@ import { Course } from '../shared/models/courses';
 import { CourseService } from '../shared/services/course.service';
 import { ToastController} from '@ionic/angular';
 import { FavService } from '../shared/services/fav.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-tab2',
@@ -11,9 +13,12 @@ import { FavService } from '../shared/services/fav.service';
 })
 export class Tab2Page {
   courses: Course[] = [];
+  //api
+  course: any = []
+
 
   constructor(private courseService: CourseService, private toastController: ToastController,
-    private favService: FavService) {
+    private favService: FavService, private http: HttpClient) {
     this.courses = this.courseService.getCourses();
   }
 
@@ -23,36 +28,37 @@ export class Tab2Page {
       item.icon = 'bookmark';
       this.favService.add(item);
       const toast = await this.toastController.create({
-        message: item.name + ' bookmarked :)',
-        duration: 2000,
+        message: item.name + ' has been bookmarked',
+        duration: 1000,
         position: 'top',
-        color: 'secondary'
+        color: 'success'
         });
         toast.present();
     } else {
       item.icon = 'bookmark-outline'; 
       this.favService.remove(item);
       const toast = await this.toastController.create({
-        message: item.name + ' removed from bookmark :)',
-        duration: 2000,
+        message: item.name + ' removed from bookmark',
+        duration: 1000,
         position: 'top',
-        color: 'secondary'
+        color: 'danger'
         });
         toast.present();
       
     } 
   }
 
-    /*ngOnInit() {
+  ngOnInit() {
     this.getCourses()
   }
 
   async getCourses(){
     var url = 'https://eximiuscapstoneproject2022.herokuapp.com/getCourses';
     this.http.get(url).subscribe(data => {
-    this.courses=data
+
+    this.course=data
     })
-  }*/
+  }
 
 
 }

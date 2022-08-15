@@ -30,7 +30,7 @@ export class EditProfilePage implements OnInit {
 
     this.editUserForm = new FormGroup({
       name: new FormControl(this.user.name, [Validators.required]),
-      mobile: new FormControl(this.user.mobile, [Validators.required]),
+      mobile: new FormControl(this.user.mobile, [Validators.required, Validators.minLength(8), Validators.maxLength(8)]),
       email: new FormControl(this.user.email, [Validators.required]),   
       education: new FormControl(this.user.education, [Validators.required]),
     }); 
@@ -39,8 +39,9 @@ export class EditProfilePage implements OnInit {
   ngOnInit() {}
 
   async update() {
-    this.submitted = true;
+    
     if (this.editUserForm.valid) {
+      
       const user = new User(
         this.editUserForm.value.name,
         this.editUserForm.value.mobile,
@@ -48,20 +49,35 @@ export class EditProfilePage implements OnInit {
         this.editUserForm.value.education,
         undefined,
         this.userId);
+        
     this.userService.update(user);
-    }
-
     const toast = await this.toastController.create({
       message: 'Profile Updated Successfully',
-      duration: 2000,
+      duration: 1000,
       position: 'top',
       color: 'success'
       });
       toast.present();
-
-
+      this.submitted = true;
       this.router.navigate(['tabs/tab3'])
-  }
+      
+    }
+    else{
+      const toast = await this.toastController.create({
+        message: 'Please fill in all the fields correctly',
+        duration: 1000,
+        position: 'top',
+        color: 'danger'
+        });
+        toast.present();
+        this.submitted = false;
+        
+      }
+    }
+
+
+    
+  
 
 
   /* Add getData() method
@@ -129,7 +145,7 @@ export class EditProfilePage implements OnInit {
       }, error => {
         console.log(error);
       });
-      this.router.navigate(['tabs/tab2']);
+      this.router.navigate(['tabs/tab3']);
     }//if valid
   }
 
