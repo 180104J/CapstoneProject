@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Institutions
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-text class="ion-text-center" id="identity" color="primary">
+  <h1>I am currently a</h1>
+  </ion-text>
+  <div id="staffChoice">
+    <ion-button class="buttons" id="staff" color="primary" [routerLink]="['/institutions']">Staff</ion-button>
+  </div>
+  <div id="seniorChoice">
+    <ion-button class="buttons" id="senior" color="primary"  [routerLink]="['/reviews']">Senior</ion-button>
+  </div>
+  <div id="graduateChoice">
+    <ion-button class="buttons" id="graduate" color="primary"  [routerLink]="['/viewinstitutionsandreviews']">Graduate</ion-button>
+  </div>
+
+<!-- <ion-buttons slot="end">
+  <ion-button color="primary" [routerLink]="['/student']">
+    <ion-icon slot="icon-only" name="person"></ion-icon>
+  </ion-button>
+</ion-buttons> -->
+
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-explore-container name="Tab 1 page"></app-explore-container> -->
+</ion-content>

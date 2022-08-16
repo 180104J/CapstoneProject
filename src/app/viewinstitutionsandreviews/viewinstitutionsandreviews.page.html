@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Institutions and Reviews</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3>List of Institutions and Companies</h3>
+  <ion-list>
+    <ion-item *ngFor="let item of institutions">
+    <ion-label>
+    <h2>{{item.instutionName}}</h2>
+    <h2>{{item.instutionDetails}}</h2>
+    </ion-label>
+    </ion-item>
+    </ion-list>
+
+    <h3>List of Reviews</h3>
+    <ion-list>
+      <ion-item *ngFor="let item of reviews">
+      <ion-label>
+        <h2>{{item.reviewerName}}</h2>
+      <h2>{{item.instutionName}}</h2>
+      <h2>{{item.instutionDetails}}</h2>
+      </ion-label>
+      </ion-item>
+      </ion-list>
+</ion-content>

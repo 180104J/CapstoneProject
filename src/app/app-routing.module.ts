@@ -26,6 +26,19 @@ const routes: Routes = [
     path: 'add-comment',
     loadChildren: () => import('./add-comment/add-comment.module').then( m => m.AddCommentPageModule)
   },
+  {
+    path: 'institutions',
+    loadChildren: () => import('./institutions/institutions.module').then( m => m.InstitutionsPageModule)
+  },
+  {
+    path: 'reviews',
+    loadChildren: () => import('./reviews/reviews.module').then( m => m.ReviewsPageModule)
+  },
+  {
+    path: 'viewinstitutionsandreviews',
+    loadChildren: () => import('./viewinstitutionsandreviews/viewinstitutionsandreviews.module').then( m => m.ViewinstitutionsandreviewsPageModule)
+  },
+
 ];
 @NgModule({
   imports: [
